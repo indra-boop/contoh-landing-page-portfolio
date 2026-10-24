@@ -1,0 +1,155 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #f4efe6;
+  --color-foam: #faf7f2;
+  --color-sand: #e7dfd2;
+  --color-ink: #1c1915;
+  --color-muted: #6f675e;
+  --color-line: #ddd6cb;
+  --color-accent: #9c3d22;
+
+  --font-display: "Fraunces", "Iowan Old Style", "Palatino Linotype", serif;
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+
+  --leading-display: 0.9;
+  --tracking-label: 0.16em;
+
+  --text-poster: 9.5rem;
+  --text-poster--line-height: 0.8;
+
+  --spacing-poster: 18rem;
+  --spacing-feature: 30rem;
+  --spacing-band: 14rem;
+
+  --radius-pill: 999px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    line-height: 1.5;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-paper);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@layer utilities {
+  .press {
+    transition: scale 150ms ease-out;
+  }
+
+  .press:active:not(:disabled) {
+    scale: 0.96;
+  }
+}
+
+.poster-num {
+  transition: transform 400ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.group:hover .poster-num,
+.group:focus-within .poster-num {
+  transform: translateY(-0.35rem);
+}
+
+.reveal {
+  transform: translateY(100%);
+  transition: transform 280ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.group:hover .reveal,
+.group:focus-within .reveal {
+  transform: translateY(0);
+}
+
+.card-in {
+  animation: card-in 480ms cubic-bezier(0.2, 0, 0, 1) both;
+}
+
+.card-in:nth-child(2) { animation-delay: 50ms; }
+.card-in:nth-child(3) { animation-delay: 100ms; }
+.card-in:nth-child(4) { animation-delay: 150ms; }
+.card-in:nth-child(5) { animation-delay: 200ms; }
+.card-in:nth-child(6) { animation-delay: 250ms; }
+.card-in:nth-child(7) { animation-delay: 300ms; }
+.card-in:nth-child(8) { animation-delay: 350ms; }
+
+.rise {
+  animation: rise 700ms cubic-bezier(0.2, 0, 0, 1) both;
+}
+
+.rise-2 { animation-delay: 80ms; }
+.rise-3 { animation-delay: 160ms; }
+.rise-4 { animation-delay: 240ms; }
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .poster-num,
+  .reveal,
+  .press,
+  .card-in,
+  .rise,
+  .rise-2,
+  .rise-3,
+  .rise-4 {
+    animation: none;
+    transition: none;
+  }
+}
