@@ -3,18 +3,18 @@ import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
 import appCss from "../styles.css?url";
 
-const APP_NAME = "Sero Hale";
+const APP_NAME = "DJ Nah-Man";
 
 export const Route = createRootRoute({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: `${APP_NAME} — Discography` },
+      { title: `${APP_NAME} — Diskografi` },
       {
         name: "description",
         content:
-          "Discography of Sero Hale, a DJ and producer in Jakarta. Singles, EPs, remixes, and mixes on Hale Records.",
+          "Diskografi DJ Nah-Man. Funkot, Breakbeat, dan Indonesia Speed Trance di label Shadytronic.",
       },
       { name: "theme-color", content: "#f4efe6" },
     ],

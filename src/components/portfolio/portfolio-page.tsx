@@ -18,10 +18,10 @@ type Filter = "All" | Category;
 const filters: Filter[] = ["All", ...categories];
 
 const contactSchema = z.object({
-  name: z.string().trim().min(2, "Please add your name."),
-  email: z.email("Use a real email address."),
-  message: z.string().trim().min(16, "A sentence or two is enough to start."),
-  kind: z.enum(["Club", "Listening bar", "Festival", "Radio", ""]),
+  name: z.string().trim().min(2, "Tuliskan nama."),
+  email: z.email("Pakai alamat email yang benar."),
+  message: z.string().trim().min(16, "Cukup satu atau dua kalimat."),
+  kind: z.enum(["Klub", "Festival", "Acara", "Radio", ""]),
 });
 
 type ContactValues = z.infer<typeof contactSchema>;
@@ -81,7 +81,7 @@ export function PortfolioPage() {
         href="#work"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-ink focus:px-4 focus:py-2 focus:text-paper"
       >
-        Skip to discography
+        Langsung ke diskografi
       </a>
       <div className="h-1 bg-accent" aria-hidden="true" />
       <Header
@@ -117,7 +117,7 @@ function Header({
     <header className="sticky top-0 z-30 border-b border-line bg-paper/90 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5 md:px-8">
         <a href="#top" className="font-display text-lg leading-none tracking-tight">
-          Sero Hale
+          DJ Nah-Man
         </a>
         <nav className="hidden items-center gap-1 md:flex" aria-label="Sections">
           {nav.map((item) => (
@@ -149,7 +149,7 @@ function Header({
           onClick={onToggle}
         >
           {menuOpen ? <X className="size-5" aria-hidden="true" /> : <Menu className="size-5" aria-hidden="true" />}
-          {menuOpen ? "Close" : "Menu"}
+          {menuOpen ? "Tutup" : "Menu"}
         </button>
       </div>
       {menuOpen ? (
@@ -173,33 +173,30 @@ function Header({
 function Hero() {
   return (
     <section className="mx-auto max-w-6xl px-5 pb-14 pt-12 md:px-8 md:pb-20 md:pt-16">
-      <p className="rise text-xs uppercase tracking-label text-muted">Discography · Vol. 08 · Jakarta</p>
+      <p className="rise text-xs uppercase tracking-label text-muted">Diskografi · Vol. 08 · Indonesia</p>
       <div className="mt-6 grid items-end gap-8 md:grid-cols-12">
-        <h1 className="rise rise-2 font-display text-7xl leading-display tracking-tight sm:text-8xl md:col-span-8 lg:text-9xl">
-          <span className="block">Sero</span>
-          <span className="block italic">Hale</span>
+        <h1 className="rise rise-2 font-display text-6xl leading-none tracking-tight sm:text-7xl md:col-span-8 md:text-8xl lg:text-[7.5rem]">
+          <span className="block">DJ</span>
+          <span className="block italic">Nah-Man</span>
         </h1>
         <p className="rise rise-3 max-w-sm text-pretty md:col-span-4 md:justify-self-end">
-          DJ and producer. House, dub, and breaks for small rooms. Releases, 2021—2026.
+          Funkot, Breakbeat, dan Indonesia Speed Trance. Rilisan Shadytronic, 2021—2026.
         </p>
       </div>
       <div className="rise rise-4 mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-line pt-5 text-sm text-muted">
-        <span>Hale Records</span>
+        <span>Shadytronic</span>
         <span className="hidden h-px w-8 bg-line sm:block" aria-hidden="true" />
-        <span>Booking open for 2026</span>
+        <span>Booking 2026</span>
         <a href="#work" className="text-ink underline decoration-accent decoration-2 underline-offset-4">
-          Read the catalog
+          Baca katalog
         </a>
       </div>
     </section>
   );
 }
 
-function releaseWord(filter: Category, count: number) {
-  if (filter === "EP") return count === 1 ? "EP" : "EPs";
-  if (filter === "Single") return count === 1 ? "single" : "singles";
-  if (filter === "Remix") return count === 1 ? "remix" : "remixes";
-  return count === 1 ? "mix" : "mixes";
+function releaseWord(filter: Category) {
+  return filter;
 }
 
 function Work({
@@ -212,23 +209,23 @@ function Work({
   onFilter: (filter: Filter) => void;
 }) {
   const countLabel =
-    filter === "All" ? `${visible.length} releases` : `${visible.length} ${releaseWord(filter, visible.length)}`;
+    filter === "All" ? `${visible.length} rilisan` : `${visible.length} ${releaseWord(filter)}`;
 
   return (
     <section id="work" className="scroll-mt-24 border-t border-line">
       <div className="mx-auto max-w-6xl px-5 py-12 md:px-8 md:py-16">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="text-xs uppercase tracking-label text-muted">Catalog</p>
-            <h2 className="mt-2 font-display text-4xl leading-display md:text-5xl">Discography</h2>
+            <p className="text-xs uppercase tracking-label text-muted">Katalog</p>
+            <h2 className="mt-2 font-display text-4xl leading-display md:text-5xl">Diskografi</h2>
           </div>
           <p className="max-w-sm text-sm text-muted">
-            <span className="md:hidden">The note sits under each sleeve.</span>
-            <span className="hidden md:inline">Hover a sleeve — or focus it — to read the note.</span>
+            <span className="md:hidden">Catatan ada di bawah setiap sleeve.</span>
+            <span className="hidden md:inline">Arahkan kursor ke sleeve — atau fokus — untuk membaca catatan.</span>
           </p>
         </div>
 
-        <div className="mt-8 flex flex-wrap gap-2" role="group" aria-label="Filter by format">
+        <div className="mt-8 flex flex-wrap gap-2" role="group" aria-label="Filter genre">
           {filters.map((item) => {
             const count =
               item === "All" ? projects.length : projects.filter((project) => project.category === item).length;
@@ -246,7 +243,7 @@ function Work({
                     : "border-line bg-transparent text-ink hover:border-ink",
                 )}
               >
-                {item}
+                {item === "All" ? "Semua" : item}
                 <span className={cn("tabular-nums", selected ? "text-paper/70" : "text-muted")}>{count}</span>
               </button>
             );
@@ -254,7 +251,7 @@ function Work({
         </div>
 
         <p className="mt-6 text-sm text-muted" aria-live="polite">
-          Showing {countLabel}
+          Menampilkan {countLabel}
         </p>
 
         <ul key={filter} className="mt-8 grid grid-cols-1 gap-x-6 gap-y-12 md:grid-cols-12">
@@ -342,24 +339,23 @@ function About() {
     <section id="about" className="scroll-mt-24 border-t border-line">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-16 md:grid-cols-12 md:px-8 md:py-24">
         <div className="flex min-h-80 flex-col justify-between bg-ink p-8 text-paper md:col-span-5">
-          <p className="text-xs uppercase tracking-label text-sand">The booth</p>
-          <p className="font-display text-8xl italic leading-none">S.</p>
+          <p className="text-xs uppercase tracking-label text-sand">Booth</p>
+          <p className="font-display text-8xl italic leading-none">N.</p>
           <p className="max-w-xs font-display text-3xl leading-display italic">
-            Records for rooms that are already listening.
+            Rilisan untuk lantai yang sudah bergerak.
           </p>
         </div>
         <div className="md:col-span-7 md:py-4">
-          <p className="text-xs uppercase tracking-label text-muted">About</p>
-          <h2 className="mt-2 font-display text-4xl leading-display md:text-5xl">A small room, on purpose.</h2>
+          <p className="text-xs uppercase tracking-label text-muted">Tentang</p>
+          <h2 className="mt-2 font-display text-4xl leading-display md:text-5xl">Lantai yang kecil, sengaja.</h2>
           <div className="mt-6 max-w-xl space-y-4 text-pretty">
             <p>
-              Sero Hale plays house, dub, and breaks from Jakarta — listening bars, late clubs, and the
-              occasional radio hour. The sets are long. The records are chosen to be lived with, not shouted
-              over.
+              DJ Nah-Man memutar Funkot, Breakbeat, dan Indonesia Speed Trance. Set-nya panjang, kick-nya
+              rapat, dan melodinya tidak buru-buru meski BPM-nya tinggi.
             </p>
             <p>
-              Hale Records is the imprint: singles, EPs, and the odd remix. Most of it is written, edited, and
-              pressed in small runs. Bookings go through the desk below.
+              Shadytronic adalah labelnya. Single, EP, remix, dan mix keluar dari sana. Booking lewat meja
+              di bawah.
             </p>
           </div>
           <dl className="mt-10 grid grid-cols-2 gap-x-6 gap-y-6 border-t border-line pt-6">
@@ -381,10 +377,10 @@ function Skills() {
     <section id="skills" className="scroll-mt-24 border-t border-line">
       <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
         <div className="max-w-xl">
-          <p className="text-xs uppercase tracking-label text-muted">Sound</p>
-          <h2 className="mt-2 font-display text-4xl leading-display md:text-5xl">What the night is made of.</h2>
+          <p className="text-xs uppercase tracking-label text-muted">Suara</p>
+          <h2 className="mt-2 font-display text-4xl leading-display md:text-5xl">Bahan malamnya.</h2>
           <p className="mt-4 text-pretty text-muted">
-            Not a rider. The floor, the studio, and the radio hour — the three places the records actually live.
+            Bukan rider. Lantai, studio, dan jam radio — tiga tempat rekamannya hidup.
           </p>
         </div>
         <div className="mt-12 grid gap-12 md:grid-cols-3">
@@ -445,24 +441,24 @@ function Contact() {
     <section id="contact" className="scroll-mt-24 border-t border-line">
       <div className="mx-auto grid max-w-6xl gap-12 px-5 py-16 md:grid-cols-12 md:px-8 md:py-24">
         <div className="md:col-span-5">
-          <p className="text-xs uppercase tracking-label text-muted">Contact</p>
-          <h2 className="mt-2 font-display text-4xl leading-display md:text-5xl">Book a date.</h2>
+          <p className="text-xs uppercase tracking-label text-muted">Kontak</p>
+          <h2 className="mt-2 font-display text-4xl leading-display md:text-5xl">Pesan tanggal.</h2>
           <p className="mt-4 max-w-sm text-pretty">
-            City, room, and the kind of night. A few lines is enough — club, listening bar, festival, or radio.
+            Kota, ruangan, dan jenis malam. Cukup beberapa baris — klub, festival, acara, atau radio.
           </p>
           <p className="mt-8 text-sm text-muted">
-            booking@serohale.com
+            Shadytronic
             <br />
-            Replies within a few days.
+            Balasan dalam beberapa hari.
           </p>
         </div>
         <div className="md:col-span-7">
           {sent ? (
             <div role="status" className="border-t border-ink pt-8">
-              <p className="font-display text-5xl italic leading-display">Noted.</p>
+              <p className="font-display text-5xl italic leading-display">Tercatat.</p>
               <p className="mt-4 max-w-md text-pretty">
-                Thank you, {sent.name}. I’ll write to {sent.email} within a few days
-                {sent.kind ? ` about the ${sent.kind.toLowerCase()} booking` : ""}.
+                Terima kasih, {sent.name}. Balasan ke {sent.email} menyusul dalam beberapa hari
+                {sent.kind ? ` untuk booking ${sent.kind.toLowerCase()}` : ""}.
               </p>
               <button
                 type="button"
@@ -472,14 +468,14 @@ function Contact() {
                   setValues(emptyContact);
                 }}
               >
-                Send another
+                Kirim lagi
               </button>
             </div>
           ) : (
             <form onSubmit={onSubmit} noValidate className="border-t border-ink">
               <Field
                 id={`${baseId}-name`}
-                label="Name"
+                label="Nama"
                 value={values.name}
                 error={errors.name}
                 autoComplete="name"
@@ -495,7 +491,7 @@ function Contact() {
                 onChange={(value) => update("email", value)}
               />
               <fieldset className="border-b border-line py-5">
-                <legend className="text-xs uppercase tracking-label text-muted">Kind of night</legend>
+                <legend className="text-xs uppercase tracking-label text-muted">Jenis malam</legend>
                 <div className="mt-3 flex flex-wrap gap-2">
                   {bookingKinds.map((kind) => {
                     const selected = values.kind === kind;
@@ -518,7 +514,7 @@ function Contact() {
               </fieldset>
               <div className="border-b border-line py-5">
                 <label htmlFor={`${baseId}-message`} className="text-xs uppercase tracking-label text-muted">
-                  Note
+                  Catatan
                 </label>
                 <textarea
                   id={`${baseId}-message`}
@@ -528,7 +524,7 @@ function Contact() {
                   aria-invalid={errors.message ? true : undefined}
                   aria-describedby={errors.message ? `${baseId}-message-error` : undefined}
                   className="mt-2 w-full resize-y bg-transparent text-base outline-none placeholder:text-muted"
-                  placeholder="City, date, and the room."
+                  placeholder="Kota, tanggal, dan ruangannya."
                 />
                 {errors.message ? (
                   <p id={`${baseId}-message-error`} className="mt-2 text-sm text-accent" role="alert">
@@ -537,9 +533,9 @@ function Contact() {
                 ) : null}
               </div>
               <div className="flex flex-wrap items-center justify-between gap-4 pt-6">
-                <p className="text-sm text-muted">No mailing list. Just a reply.</p>
+                <p className="text-sm text-muted">Tidak ada mailing list. Hanya balasan.</p>
                 <button type="submit" className="press h-12 bg-ink px-6 text-sm text-paper">
-                  Send the booking
+                  Kirim booking
                 </button>
               </div>
             </form>
@@ -595,10 +591,10 @@ function Footer() {
   return (
     <footer className="border-t border-ink bg-ink text-paper">
       <div className="mx-auto max-w-6xl px-5 py-14 md:px-8 md:py-16">
-        <p className="font-display text-6xl leading-display italic sm:text-8xl">Hale</p>
+        <p className="font-display text-5xl leading-none italic sm:text-7xl md:text-8xl">Nah-Man</p>
         <div className="mt-12 grid gap-10 sm:grid-cols-3">
           <div>
-            <p className="text-xs uppercase tracking-label text-sand">Index</p>
+            <p className="text-xs uppercase tracking-label text-sand">Indeks</p>
             <ul className="mt-4 space-y-2">
               {nav.map((item) => (
                 <li key={item.id}>
@@ -610,26 +606,26 @@ function Footer() {
             </ul>
           </div>
           <div>
-            <p className="text-xs uppercase tracking-label text-sand">Desk</p>
+            <p className="text-xs uppercase tracking-label text-sand">Meja</p>
             <p className="mt-4 text-sm">
-              Sero Hale
+              DJ Nah-Man
               <br />
-              Jakarta, Indonesia
+              Indonesia
               <br />
-              booking@serohale.com
+              Shadytronic
             </p>
           </div>
           <div>
-            <p className="text-xs uppercase tracking-label text-sand">Colophon</p>
+            <p className="text-xs uppercase tracking-label text-sand">Kolofon</p>
             <p className="mt-4 text-sm text-pretty text-sand">
-              Set in Fraunces and Outfit. A discography laid out like a catalog, not a press sheet.
+              Diset dengan Fraunces dan Outfit. Diskografi yang ditata seperti katalog, bukan press sheet.
             </p>
           </div>
         </div>
         <div className="mt-12 flex flex-wrap items-center justify-between gap-3 border-t border-paper/25 pt-6 text-xs uppercase tracking-label text-sand">
-          <p>© 2026 Sero Hale</p>
+          <p>© 2026 DJ Nah-Man</p>
           <a href="#top" className="hover:text-paper">
-            Back to top
+            Kembali ke atas
           </a>
         </div>
       </div>
