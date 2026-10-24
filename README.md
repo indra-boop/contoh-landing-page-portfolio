@@ -1,4 +1,4 @@
-# contoh landing-page-portoflio
+# contoh landing-page-portfolio
 
 Contoh landing page portfolio dengan gaya editorial. Satu halaman: kartu proyek, catatan yang muncul saat hover, filter kategori, bagian tentang, keahlian, formulir kontak, dan footer.
 
