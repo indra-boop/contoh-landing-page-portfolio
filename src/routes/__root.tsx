@@ -3,18 +3,18 @@ import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
 import appCss from "../styles.css?url";
 
-const APP_NAME = "Mira Ellison";
+const APP_NAME = "Sero Hale";
 
 export const Route = createRootRoute({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: `${APP_NAME} — Selected work` },
+      { title: `${APP_NAME} — Discography` },
       {
         name: "description",
         content:
-          "Selected work by Mira Ellison, a designer and engineer in Copenhagen. Product, editorial, systems, and motion.",
+          "Discography of Sero Hale, a DJ and producer in Jakarta. Singles, EPs, remixes, and mixes on Hale Records.",
       },
       { name: "theme-color", content: "#f4efe6" },
     ],

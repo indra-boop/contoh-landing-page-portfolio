@@ -1,16 +1,16 @@
 # contoh landing-page-portfolio
 
-Contoh landing page portfolio dengan gaya editorial. Satu halaman: kartu proyek, catatan yang muncul saat hover, filter kategori, bagian tentang, keahlian, formulir kontak, dan footer.
+Contoh landing page diskografi DJ dengan gaya editorial. Satu halaman: sleeve rilisan, catatan yang muncul saat hover, filter format, tentang, sound, formulir booking, dan footer.
 
-Persona di halaman ini fiktif — **Mira Ellison**, desainer dan engineer di Kopenhagen — supaya contohnya terasa selesai, bukan template kosong.
+Persona di halaman ini fiktif — **Sero Hale**, DJ dan produser di Jakarta, imprint Hale Records — supaya contohnya terasa selesai, bukan template kosong.
 
 ## Yang ada di halaman
 
 - Navigasi sticky dengan smooth scroll
-- Indeks karya (8 proyek) dan chip filter: All, Product, Editorial, Systems, Motion
-- Hover atau fokus pada cover menampilkan deskripsi singkat (di ponsel, catatan ada di bawah judul)
-- Tentang, keahlian, dan formulir kontak dengan validasi
-- Footer dengan indeks, praktik, dan kolofon
+- Diskografi (8 rilisan) dan chip filter: All, Single, EP, Remix, Mix
+- Hover atau fokus pada sleeve menampilkan catatan singkat (di ponsel, catatan ada di bawah judul)
+- Tentang, sound, dan formulir booking dengan validasi
+- Footer dengan indeks, meja booking, dan kolofon
 - Responsif, dari layar sempit sampai desktop
 
 ## Menjalankan
@@ -41,5 +41,5 @@ npm run typecheck
 | --- | --- |
 | `src/routes/index.tsx` | Halaman utama |
 | `src/components/portfolio/portfolio-page.tsx` | Tata letak dan interaksi |
-| `src/data/portfolio.ts` | Proyek, keahlian, dan navigasi |
+| `src/data/portfolio.ts` | Rilisan, sound, dan navigasi |
 | `src/styles.css` | Token warna dan tipografi |

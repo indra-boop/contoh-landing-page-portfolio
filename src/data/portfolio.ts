@@ -1,8 +1,11 @@
-export const categories = ["Product", "Editorial", "Systems", "Motion"] as const;
+export const categories = ["Single", "EP", "Remix", "Mix"] as const;
 
 export type Category = (typeof categories)[number];
 export type Tone = "ink" | "paper" | "sand" | "accent";
 export type Layout = "br" | "tl" | "center";
+
+export const bookingKinds = ["Club", "Listening bar", "Festival", "Radio"] as const;
+export type BookingKind = (typeof bookingKinds)[number];
 
 export type Project = {
   id: string;
@@ -21,90 +24,87 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    id: "atelier",
+    id: "night-market",
     index: "01",
-    title: "Atelier Index",
+    title: "Night Market",
     year: "2025",
-    category: "Product",
-    client: "Holm Ceramics",
-    role: "Design & build",
+    category: "Single",
+    client: "Hale Records",
+    role: "126 BPM · A / AA",
     summary:
-      "A quiet catalog for a stoneware studio — pieces, glazes, and the waitlist, set like a lookbook rather than a shop.",
+      "Four cuts for the last hour. A dry kick, a borrowed vocal, and a bassline that refuses to hurry.",
     tone: "ink",
     layout: "br",
     span: "md:col-span-7",
     height: "feature",
   },
   {
-    id: "harbor",
+    id: "low-tide",
     index: "02",
-    title: "Harbor Ledger",
+    title: "Low Tide",
     year: "2023",
-    category: "Product",
-    client: "The North Room",
-    role: "Product design",
+    category: "EP",
+    client: "Hale Records",
+    role: "118–122 BPM · six tracks",
     summary:
-      "Reservations for a twelve-room inn. Dates, rooms, and a handwritten confirmation — no funnel and no upsells.",
+      "Recorded between soundcheck and sunrise. The B-side is almost a letter, played with the lights still down.",
     tone: "sand",
     layout: "tl",
     span: "md:col-span-5",
     height: "feature",
   },
   {
-    id: "field",
+    id: "room-tone",
     index: "03",
-    title: "Field Notes",
+    title: "Room Tone",
     year: "2024",
-    category: "Editorial",
-    client: "Salt & Meridian",
-    role: "Art direction",
+    category: "Mix",
+    client: "NTS",
+    role: "74 minutes",
     summary:
-      "A seasonal journal on coastal land. Long essays, field photographs, and a contents page that behaves like a map.",
+      "A guest hour of dub, slow house, and records that only work once the room is already listening.",
     tone: "paper",
     layout: "center",
     span: "md:col-span-4",
     height: "poster",
   },
   {
-    id: "quiet",
+    id: "afterimage",
     index: "04",
-    title: "Quiet Type",
+    title: "Afterimage",
     year: "2024",
-    category: "Editorial",
-    client: "Voss Foundry",
-    role: "Design & front end",
-    summary:
-      "A specimen for a text face cut for small sizes. Proofs, waterfalls, and a buy page that does not shout.",
+    category: "Remix",
+    client: "Lumen Park",
+    role: "124 BPM",
+    summary: "Keeps the vocal and throws the rest of the song out the window. The dub is the one to play.",
     tone: "ink",
     layout: "br",
     span: "md:col-span-4",
     height: "poster",
   },
   {
-    id: "northline",
+    id: "southbound",
     index: "05",
-    title: "Northline",
+    title: "Southbound",
     year: "2025",
-    category: "Systems",
-    client: "Aarhus Transit",
-    role: "Design systems",
-    summary:
-      "Wayfinding tokens, sign templates, and a component library the sign shop and the app team actually share.",
+    category: "Single",
+    client: "Hale Records",
+    role: "130 BPM · tool & dub",
+    summary: "One peak-time tool and its dub. Built to be played twice, back to back, without a speech.",
     tone: "accent",
     layout: "tl",
     span: "md:col-span-4",
     height: "poster",
   },
   {
-    id: "orchard",
+    id: "open-window",
     index: "06",
-    title: "Orchard",
+    title: "Open Window",
     year: "2022",
-    category: "Systems",
-    client: "Grove Market",
-    role: "Brand & build",
-    summary:
-      "A system for a neighborhood grocer — labels, receipts, and a small site that lists only what is in season.",
+    category: "EP",
+    client: "Small Press",
+    role: "110–116 BPM",
+    summary: "The early EP. Guitar samples, dusty hats, and a title taken from the weather that week.",
     tone: "sand",
     layout: "center",
     span: "md:col-span-5",
@@ -115,26 +115,25 @@ export const projects: Project[] = [
     index: "07",
     title: "Vesper",
     year: "2026",
-    category: "Motion",
-    client: "Maison Elan",
-    role: "Titles & direction",
-    summary:
-      "A forty-second film for a night fragrance. One room, one light, and titles that arrive like a whisper.",
+    category: "Mix",
+    client: "Rinse FM",
+    role: "58 minutes · closing set",
+    summary: "A closing set for a quiet room. One light, and records that arrive like a whisper.",
     tone: "ink",
     layout: "br",
     span: "md:col-span-7",
     height: "poster",
   },
   {
-    id: "kite",
+    id: "paper-kite",
     index: "08",
-    title: "Kite",
+    title: "Paper Kite",
     year: "2021",
-    category: "Motion",
-    client: "Independent",
-    role: "Title sequence",
+    category: "Remix",
+    client: "Self-released",
+    role: "122 BPM · first outing",
     summary:
-      "Opening titles for a short documentary about a father and a handmade kite. Paper, wind, and the grain of 16mm.",
+      "The first remix that left the hard drive. A 16-bar loop, some paper, and a lot of wind in the recording.",
     tone: "paper",
     layout: "tl",
     span: "md:col-span-12",
@@ -145,31 +144,31 @@ export const projects: Project[] = [
 export const skillGroups = [
   {
     index: "01",
-    title: "Interface",
-    items: ["Product design", "Art direction", "Design systems", "Prototyping", "Accessibility"],
+    title: "Floor",
+    items: ["Long blends", "Programming", "Reading a room", "Closing sets", "Dubplates"],
   },
   {
     index: "02",
-    title: "Engineering",
-    items: ["TypeScript", "React", "CSS & layout", "Motion", "Design tokens"],
+    title: "Studio",
+    items: ["Arrangement", "Sampling", "Edits", "Dub mixes", "Sequencing"],
   },
   {
     index: "03",
-    title: "Editorial",
-    items: ["Typography", "Longform", "Information design", "Brand systems", "Writing"],
+    title: "Radio",
+    items: ["Guest mixes", "Curation", "Track notes", "Listening sets", "Idents"],
   },
 ] as const;
 
 export const facts = [
-  { label: "Based", value: "Copenhagen" },
-  { label: "Since", value: "2016" },
-  { label: "Now", value: "Spring 2027" },
-  { label: "Languages", value: "English, Danish" },
+  { label: "Based", value: "Jakarta" },
+  { label: "Since", value: "2018" },
+  { label: "Now", value: "Booking 2026" },
+  { label: "Plays", value: "House, dub, breaks" },
 ] as const;
 
 export const nav = [
-  { href: "#work", id: "work", label: "Work" },
+  { href: "#work", id: "work", label: "Discography" },
   { href: "#about", id: "about", label: "About" },
-  { href: "#skills", id: "skills", label: "Skills" },
-  { href: "#contact", id: "contact", label: "Contact" },
+  { href: "#skills", id: "skills", label: "Sound" },
+  { href: "#contact", id: "contact", label: "Booking" },
 ] as const;
